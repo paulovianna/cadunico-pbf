@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from views import *
+from cadunico.views import Inicio as InicioAmzop
 
 admin.autodiscover()
 
@@ -9,7 +10,7 @@ urlpatterns = patterns('',
                        
      url(r'^admin/', include(admin.site.urls)),
      url(r'^upload/$',upload),
-     url(r'^$',Inicio),
+     url(r'^geoliberty/$',Inicio),
      url(r'^paises/$',Paises),
      url(r'^paises/pais/(?P<id_pais>\d+)/$',Mapa_Pais),
      url(r'^regioes/$',Regioes),
@@ -28,5 +29,6 @@ urlpatterns = patterns('',
      url(r'^assets/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT,
         }),
-     url(r'^cadunico/', include('cadunico.urls')),
+     url(r'^amzop/', include('cadunico.urls')),
+     url(r'^$',InicioAmzop),
 )
