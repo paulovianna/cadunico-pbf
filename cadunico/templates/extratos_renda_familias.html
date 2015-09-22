@@ -1,0 +1,88 @@
+{% extends "base_cadunico.html" %}
+{% block styles %}
+<link rel="stylesheet" href="/assets/data-tables-1.10.9/media/css/dataTables.bootstrap.min.css">
+{% endblock %}
+
+{% block page-header %}Extrato Renda Familias Cadastradas no Cadunico{% endblock%}{%block page-header-small%}{%endblock%}
+
+{% block conteudo %}
+
+<table id="cadastros" class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Município</th>
+            <th>Familias Cadastradas</th>
+            <th>Famílias Beneficiadas pelo PBF</th>
+            <th>Renda até R$ 77,00</th>
+            <th>% Familias Cadastradas com Renda até R$ 77,00</th>
+            <th>Renda de R$ 77,00 até R$ 154,00</th>
+            <th>% Familias Cadastradas com Renda de R$ 77,00 até R$ 154,00</th>
+            <th>Renda de R$ 154,01 até R$ 394,00</th>
+            <th>% Familias Cadastradas com Renda de R$ 154,01 até R$ 394,00</th>
+            <th>Renda acima de R$ 394,00</th>
+            <th>% Familias Cadastradas com Renda acima de R$ 394,00</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for m in municipios %}       
+        <tr>
+            <td></td>
+            <td>{{ m.municipio.municipio }}</td>
+            <td>{{ m.familias_cadunico|floatformat:0 }}</td>
+            <td>{{ m.familias_cadunico_atendidas|floatformat:0 }}</td>
+            <td>{{ m.familias_renda_77|floatformat:0 }}</td>
+            <td>{{ m.porc_familias_cadastradas_77|floatformat:2 }}</td>
+            <td>{{ m.familias_renda_154|floatformat:0 }}</td>
+            <td>{{ m.porc_familias_cadastradas_154|floatformat:2 }}</td>
+            <td>{{ m.familias_renda_394|floatformat:0 }}</td>
+            <td>{{ m.porc_familias_cadastradas_394|floatformat:2 }}</td>
+            <td>{{ m.familias_renda_acima|floatformat:0 }}</td>
+            <td>{{ m.porc_familias_cadastradas_acima|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="/assets/data-tables-1.10.9/media/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/data-tables-1.10.9/media/js/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        var t = $('#cadastros').DataTable( {
+            "columnDefs": [ {
+                "searchable": false,
+                "orderable": false,
+                "targets": 0
+            } ],
+            "order": [[ 1, 'asc' ]],
+                "language": {
+                "lengthMenu": "Mostrar _MENU_ resultados por página",
+                "zeroRecords": "Descuplpe, nada encontrado.",
+                "info": "Apresentando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Sem resultados para apresentar",
+                "infoFiltered": "(filtrando por um tottal de _MAX_ resultados)",
+                "paginate": {
+                    "first": "Início",
+                    "last": "Fim",
+                    "next": "Próximo",
+                    "previous":"Anterior"
+                },
+                "search":"Buscar:",
+            }
+        } );
+ 
+        t.on( 'order.dt search.dt', function () {
+            t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                cell.innerHTML = i+1;
+            } );
+        } ).draw();
+    } );
+    </script>
+{% endblock %}

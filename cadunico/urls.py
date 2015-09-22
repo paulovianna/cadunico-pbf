@@ -1,11 +1,15 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
-from cadunico.views import MunicipiosCadUnico
+from cadunico.views import MunicipiosCadUnico, Inicio, CadastrosGerais, ExtratoRendaFamilias, ExtratoRendaPessoas
 
 admin.autodiscover()
 
 urlpatterns = patterns('cadunico',
                        
-     url(r'^$',MunicipiosCadUnico),
+     url(r'^$',Inicio),
+     url(r'^mapa/$',MunicipiosCadUnico),
+     url(r'^cadastros-gerais/$',CadastrosGerais),
+     url(r'^extrato-renda-familias/$',ExtratoRendaFamilias),
+     url(r'^extrato-renda-pessoas/$',ExtratoRendaPessoas),
 )

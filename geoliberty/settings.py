@@ -135,7 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'geoliberty',
-    'cadunico',
+    'cadunico'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
