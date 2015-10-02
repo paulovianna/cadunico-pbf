@@ -11,7 +11,7 @@
     <thead>
         <tr>
             <th></th>
-            <th>Município</th>
+            <th style="width:20%;">Município</th>
             <th>População</th>
             <th>Pessoas Cadastradas</th>
             <th>Renda até R$ 77,00</th>
@@ -32,17 +32,17 @@
         {% for m in municipios %}       
         <tr>
             <td></td>
-            <td>{{ m.municipio.municipio }}</td>
-            <td>{{ m.populacao|floatformat:0 }}</td>
-            <td>{{ m.pessoas_cadunico|floatformat:0 }}</td>
-            <td>{{ m.pessoas_renda_77|floatformat:0 }}</td>
-            <td>{{ m.porc_pessoas_77|floatformat:2 }}</td>
-            <td>{{ m.pessoas_renda_154|floatformat:0 }}</td>
-            <td>{{ m.porc_pessoas_154|floatformat:2 }}</td>
-            <td>{{ m.pessoas_renda_394|floatformat:0 }}</td>
-            <td>{{ m.porc_pessoas_394|floatformat:2 }}</td>
-            <td>{{ m.pessoas_renda_acima|floatformat:0 }}</td>
-            <td>{{ m.porc_pessoas_acima|floatformat:2 }}</td>
+            <td style="width:20%;">{{ m.municipio.municipio }}</td>
+            <td class="dados-numericos-tabela">{{ m.populacao|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.pessoas_cadunico|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.pessoas_renda_77|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_77|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ m.pessoas_renda_154|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_154|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ m.pessoas_renda_394|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_394|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ m.pessoas_renda_acima|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_acima|floatformat:2 }}</td>
         </tr>
         {% endfor %}
     </tbody>

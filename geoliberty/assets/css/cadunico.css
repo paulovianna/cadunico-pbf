@@ -13,3 +13,19 @@
     text-align: center;
     font-size: 1.2em;
 }
+
+th{
+    text-align: center !important;
+}
+
+.dados-numericos-tabela{
+    text-align: center !important;
+}
+
+#rodape{
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    background-color: #548b00;
+}

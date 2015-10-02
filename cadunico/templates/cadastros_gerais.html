@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/assets/data-tables-1.10.9/media/css/dataTables.bootstrap.min.css">
 {% endblock %}
 
-{% block page-header %}Cadastros e Atendimentos CadUnico{% endblock%}{%block page-header-small%}{%endblock%}
+{% block page-header %}Cadastros e Atendimentos CadÚnico{% endblock%}{%block page-header-small%}{%endblock%}
 
 {% block conteudo %}
 
@@ -11,13 +11,13 @@
     <thead>
         <tr>
             <th></th>
-            <th>Município</th>
-            <!--<th>População</th>-->
+            <th style="width:20%;">Município</th>
+            <th>População</th>
             <!--<th>Pessoas Cadastradas</th>-->
-            <th>% População Cadastrada Cadunico</th>
+            <th>% População Cadastrada CadÚnico</th>
             <!--<th>Famílias Cadastradas</th>-->
             <!--<th>Famílias Beneficiadas pelo PBF</th>-->
-            <th>% Famílias Cadastradas Cadunico Beneficiadas pelo PBF</th>
+            <th>% Famílias Cadastradas CadÚnico Beneficiadas pelo PBF</th>
             <th>% Pessoas Beneficiadas pelo PBF - População Geral</th>
             <th>IDH</th>
             <th>Valor Pago R$</th>
@@ -31,16 +31,16 @@
         {% for m in municipios %}       
         <tr>
             <td></td>
-            <td>{{ m.municipio.municipio }}</td>
-            <!--<td>{{ m.populacao|floatformat:0 }}</td>-->
+            <td style="width:20%;">{{ m.municipio.municipio }}</td>
+            <td class="dados-numericos-tabela">{{ m.populacao|floatformat:0 }}</td>
             <!--<td>{{ m.pessoas_cadunico|floatformat:0 }}</td>-->
-            <td>{{ m.porc_pessoas_cadastradas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_cadastradas|floatformat:2 }}%</td>
             <!--<td>{{ m.familias_cadunico|floatformat:0 }}</td>-->
             <!--<td>{{ m.familias_cadunico_atendidas|floatformat:0 }}</td>-->
-            <td>{{ m.porc_familias_atendidas|floatformat:2 }}%</td>
-            <td>{{ m.porc_pessoas_atendidas|floatformat:2 }}%</td>
-            <td>{{ m.idh }}</td>
-            <td>{{ m.valor_pago }}</td>
+            <td class="dados-numericos-tabela">{{ m.porc_familias_atendidas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ m.porc_pessoas_atendidas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ m.idh }}</td>
+            <td class="dados-numericos-tabela">{{ m.valor_pago|floatformat:2 }}</td>
         </tr>
         {% endfor %}
     </tbody>
