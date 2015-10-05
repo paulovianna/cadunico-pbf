@@ -13,15 +13,15 @@
             <th></th>
             <th style="width:20%;">Município</th>
             <!--<th>Famílias Cadastradas CadÚnico</th>-->
-            <th>Famílias Beneficiadas pelo PBF</th>
-            <th>Renda até R$ 77,00</th>
-            <th>% Famílias Cadastradas com Renda até R$ 77,00</th>
-            <th>Renda de R$ 77,00 até R$ 154,00</th>
-            <th>% Famílias Cadastradas com Renda de R$ 77,00 até R$ 154,00</th>
-            <th>Renda de R$ 154,01 até R$ 394,00</th>
-            <th>% Famílias Cadastradas com Renda de R$ 154,01 até R$ 394,00</th>
-            <th>Renda acima de R$ 394,00</th>
-            <th>% Famílias Cadastradas com Renda acima de R$ 394,00</th>
+            <th>Famílias Beneficiadas pelo PBF¹</th>
+            <th>Renda até R$ 77,00²</th>
+            <th>% Famílias Cadastradas com Renda até R$ 77,00³</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁴</th>
+            <th>% Famílias Cadastradas com Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁶</th>
+            <th>% Famílias Cadastradas com Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>Renda acima de R$ 394,00⁸</th>
+            <th>% Famílias Cadastradas com Renda acima de R$ 394,00⁹</th>
         </tr>
     </thead>
 
@@ -48,6 +48,95 @@
     </tbody>
 </table>
 
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">Estado</th>
+            <!--<th>Famílias Cadastradas CadÚnico</th>-->
+            <th>Famílias Beneficiadas pelo PBF¹</th>
+            <th>Renda até R$ 77,00²</th>
+            <th>% Famílias Cadastradas com Renda até R$ 77,00³</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁴</th>
+            <th>% Famílias Cadastradas com Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁶</th>
+            <th>% Famílias Cadastradas com Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>Renda acima de R$ 394,00⁸</th>
+            <th>% Famílias Cadastradas com Renda acima de R$ 394,00⁹</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for e in estados %}       
+        <tr>
+            <td style="width:20%;">{{ e.estado.uf }}</td>
+            <!--<td class="dados-numericos-tabela">{{ m.familias_cadunico|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ e.familias_cadunico_atendidas|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.familias_renda_77|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_familias_cadastradas_77|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.familias_renda_154|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_familias_cadastradas_154|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.familias_renda_394|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_familias_cadastradas_394|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.familias_renda_acima|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_familias_cadastradas_acima|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">País</th>
+            <!--<th>Famílias Cadastradas CadÚnico</th>-->
+            <th>Famílias Beneficiadas pelo PBF¹</th>
+            <th>Renda até R$ 77,00²</th>
+            <th>% Famílias Cadastradas com Renda até R$ 77,00³</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁴</th>
+            <th>% Famílias Cadastradas com Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁶</th>
+            <th>% Famílias Cadastradas com Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>Renda acima de R$ 394,00⁸</th>
+            <th>% Famílias Cadastradas com Renda acima de R$ 394,00⁹</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for p in pais %}       
+        <tr>
+            <td style="width:20%;">{{ p.pais.pais }}</td>
+            <!--<td class="dados-numericos-tabela">{{ m.familias_cadunico|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ p.familias_cadunico_atendidas|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.familias_renda_77|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_familias_cadastradas_77|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.familias_renda_154|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_familias_cadastradas_154|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.familias_renda_394|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_familias_cadastradas_394|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.familias_renda_acima|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_familias_cadastradas_acima|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="row" id="legenda">
+    <p>¹ Famílias Cadastradas CadÚnico Atendidas (04-2015)</p>
+    <p>² Famílias Cadastradas CadÚnico com Renda até R$ 77,00 (04-2015)</p>
+    <p>³ Famílias Cadastradas CadÚnico com Renda até R$ 77,00 (04-2015) / Famílias Cadastradas CadÚnico (04-2015)</p>
+    <p>⁴ Famílias Cadastradas CadÚnico com Renda de R$ 77,00 até R$ 154,00 (04-2015)</p>
+    <p>⁵ Famílias Cadastradas CadÚnico com Renda até R$ 77,00 (04-2015) / Famílias Cadastradas CadÚnico (04-2015)</p>
+    <p>⁶ Famílias Cadastradas CadÚnico com Renda de R$ 154,01 até R$ 394,00 (04-2015)</p>
+    <p>⁷ Famílias Cadastradas CadÚnico com Renda de R$ 154,01 até R$ 394,00 (04-2015) / Famílias Cadastradas CadÚnico (04-2015)</p>
+    <p>⁸ Famílias Cadastradas CadÚnico com Renda acima de R$ 394,00 (04-2015)</p>
+    <p>⁹ Famílias Cadastradas CadÚnico com Renda acima de R$ 394,00 (04-2015) / Famílias Cadastradas CadÚnico (04-2015)</p>
+</div>
 {% endblock %}
 
 {% block scripts %}

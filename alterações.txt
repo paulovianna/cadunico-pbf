@@ -1,0 +1,13 @@
+**- Fontes dos dados - MDS e IBGE
+**- Centralizar titulos, dados numericos e percentuais
+**- Valor pago duas casas decimais
+**- Inserir página inicial tabela 5 artigo (Beneficiários do PBF dos Municípios da Amzop/Extratos da População) -*- Por enquanto não -*-
+**- Padronizar -- CadÚnico --
+**- Aumentar tamanho coluna municípios
+**- Inserir abaixo página inicial (Dados Organizados pelo Grupo de Pesquisa Gestão e Organizações - UFSM/FW) Contato: 55 3744-0691
+**- Google Analytics
+**- Soma Valor pago dos 42 municipios
+**- Mais um coluna beneficio medio por familia (ver planilha)
+**- Informar periodo dos dados em legenda e a formula para chegar a porcentagem.
+**- Criar outra tabela abaixo dos dados gerais com SC, PR, RS e Brasil
+- Fonte PIB - http://www.fee.rs.gov.br/perfil-socioeconomico/municipios

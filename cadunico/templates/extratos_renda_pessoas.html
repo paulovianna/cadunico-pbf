@@ -12,16 +12,16 @@
         <tr>
             <th></th>
             <th style="width:20%;">Município</th>
-            <th>População</th>
-            <th>Pessoas Cadastradas</th>
-            <th>Renda até R$ 77,00</th>
-            <th>% População com Renda até R$ 77,00</th>
-            <th>Renda de R$ 77,00 até R$ 154,00</th>
-            <th>% População com Renda de R$ 77,00 até R$ 154,00</th>
-            <th>Renda de R$ 154,01 até R$ 394,00</th>
-            <th>% População com Renda de R$ 154,01 até R$ 394,00</th>
-            <th>Renda acima de R$ 394,00</th>
-            <th>% População com Renda acima de R$ 394,00</th>
+            <th>População¹</th>
+            <th>Pessoas Cadastradas²</th>
+            <th>Renda até R$ 77,00³</th>
+            <th>% População com Renda até R$ 77,00⁴</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>% População com Renda de R$ 77,00 até R$ 154,00⁶</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>% População com Renda de R$ 154,01 até R$ 394,00⁸</th>
+            <th>Renda acima de R$ 394,00⁹</th>
+            <th>% População com Renda acima de R$ 394,00¹⁰</th>
         </tr>
     </thead>
 
@@ -48,6 +48,96 @@
     </tbody>
 </table>
 
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">Estado</th>
+            <th>População¹</th>
+            <th>Pessoas Cadastradas²</th>
+            <th>Renda até R$ 77,00³</th>
+            <th>% População com Renda até R$ 77,00⁴</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>% População com Renda de R$ 77,00 até R$ 154,00⁶</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>% População com Renda de R$ 154,01 até R$ 394,00⁸</th>
+            <th>Renda acima de R$ 394,00⁹</th>
+            <th>% População com Renda acima de R$ 394,00¹⁰</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for e in estados %}       
+        <tr>
+            <td style="width:20%;">{{ e.estado.uf }}</td>
+            <td class="dados-numericos-tabela">{{ e.populacao|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.pessoas_cadunico|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.pessoas_renda_77|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_77|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.pessoas_renda_154|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_154|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.pessoas_renda_394|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_394|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ e.pessoas_renda_acima|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_acima|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">País</th>
+            <th>População¹</th>
+            <th>Pessoas Cadastradas²</th>
+            <th>Renda até R$ 77,00³</th>
+            <th>% População com Renda até R$ 77,00⁴</th>
+            <th>Renda de R$ 77,00 até R$ 154,00⁵</th>
+            <th>% População com Renda de R$ 77,00 até R$ 154,00⁶</th>
+            <th>Renda de R$ 154,01 até R$ 394,00⁷</th>
+            <th>% População com Renda de R$ 154,01 até R$ 394,00⁸</th>
+            <th>Renda acima de R$ 394,00⁹</th>
+            <th>% População com Renda acima de R$ 394,00¹⁰</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for p in pais %}       
+        <tr>
+            <td style="width:20%;">{{ p.pais.pais }}</td>
+            <td class="dados-numericos-tabela">{{ p.populacao|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.pessoas_cadunico|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.pessoas_renda_77|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_77|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.pessoas_renda_154|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_154|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.pessoas_renda_394|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_394|floatformat:2 }}</td>
+            <td class="dados-numericos-tabela">{{ p.pessoas_renda_acima|floatformat:0 }}</td>
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_acima|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="row" id="legenda">
+    <p>¹ População IBGE(2010)</p>
+    <p>² Pessoas Cadastradas CadÚnico (04-2015)</p>
+    <p>³ Pessoas Cadastradas CadÚnico com Renda até R$ 77,00 (04-2015) / Pessoas Cadastradas CadÚnico (04-2015)</p>
+    <p>⁴ Pessoas Cadastradas CadÚnico com Renda de R$ 77,00 até R$ 154,00 (04-2015)</p>
+    <p>⁵ Pessoas Cadastradas CadÚnico com Renda até R$ 77,00 (04-2015) / Pessoas Cadastradas CadÚnico (04-2015)</p>
+    <p>⁶ Pessoas Cadastradas CadÚnico com Renda de R$ 154,01 até R$ 394,00 (04-2015)</p>
+    <p>⁷ Pessoas Cadastradas CadÚnico com Renda de R$ 154,01 até R$ 394,00 (04-2015) / Pessoas Cadastradas CadÚnico (04-2015)</p>
+    <p>⁸ Pessoas Cadastradas CadÚnico com Renda acima de R$ 394,00 (04-2015)</p>
+    <p>⁹ Pessoas Cadastradas CadÚnico com Renda acima de R$ 394,00 (04-2015) / Pessoas Cadastradas CadÚnico (04-2015)</p>
+    <p>¹⁰ Pessoas Cadastradas CadÚnico com Renda acima de R$ 394,00 (04-2015) / Pessoas Cadastradas CadÚnico (04-2015)</p>
+</div>
 {% endblock %}
 
 {% block scripts %}

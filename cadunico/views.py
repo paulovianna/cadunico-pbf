@@ -4,7 +4,7 @@ from django.contrib.gis.gdal import SpatialReference,CoordTransform
 from django.contrib.gis import gdal
 from geoliberty.models import Municipio
 from django.template import RequestContext
-from cadunico.models import MunicipioCadUnico, MunicipioBeneficiado
+from cadunico.models import MunicipioCadUnico, MunicipioBeneficiado, EstadoBeneficiado, PaisBeneficiado
 
 def Inicio(request):
 
@@ -23,18 +23,26 @@ def MunicipiosCadUnico(request):
 
 def CadastrosGerais(request):
 
-    obj = MunicipioBeneficiado.objects.all().order_by('municipio__municipio')
-
-    return render_to_response('cadastros_gerais.html', RequestContext(request,{'municipios':obj}))
+    mun = MunicipioBeneficiado.objects.all().order_by('municipio__municipio')
+    est = EstadoBeneficiado.objects.all().order_by('estado__uf')
+    pais = PaisBeneficiado.objects.all().order_by('pais__pais')
+    total = 0
+    for o in mun:
+        total = total + o.valor_pago
+    return render_to_response('cadastros_gerais.html', RequestContext(request,{'municipios':mun,'estados':est,'total':total,'pais':pais}))
 
 def ExtratoRendaFamilias(request):
 
     obj = MunicipioBeneficiado.objects.all().order_by('municipio__municipio')
+    est = EstadoBeneficiado.objects.all().order_by('estado__uf')
+    pais = PaisBeneficiado.objects.all().order_by('pais__pais')
 
-    return render_to_response('extratos_renda_familias.html', RequestContext(request,{'municipios':obj}))
+    return render_to_response('extratos_renda_familias.html', RequestContext(request,{'municipios':obj,'estados':est,'pais':pais}))
 
 def ExtratoRendaPessoas(request):
 
     obj = MunicipioBeneficiado.objects.all().order_by('municipio__municipio')
+    est = EstadoBeneficiado.objects.all().order_by('estado__uf')
+    pais = PaisBeneficiado.objects.all().order_by('pais__pais')
 
-    return render_to_response('extratos_renda_pessoas.html', RequestContext(request,{'municipios':obj}))
+    return render_to_response('extratos_renda_pessoas.html', RequestContext(request,{'municipios':obj,'estados':est,'pais':pais}))

@@ -7,20 +7,21 @@
 
 {% block conteudo %}
 
-<table id="cadastros" class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+<table class="table table-striped table-bordered cadastros" data-page-length='50' cellspacing="0" width="100%">
     <thead>
         <tr>
             <th></th>
             <th style="width:20%;">Município</th>
-            <th>População</th>
+            <th>População¹</th>
             <!--<th>Pessoas Cadastradas</th>-->
-            <th>% População Cadastrada CadÚnico</th>
+            <th>% População Cadastrada CadÚnico²</th>
             <!--<th>Famílias Cadastradas</th>-->
             <!--<th>Famílias Beneficiadas pelo PBF</th>-->
-            <th>% Famílias Cadastradas CadÚnico Beneficiadas pelo PBF</th>
-            <th>% Pessoas Beneficiadas pelo PBF - População Geral</th>
-            <th>IDH</th>
-            <th>Valor Pago R$</th>
+            <th>% Famílias Cadastradas CadÚnico Beneficiadas pelo PBF³</th>
+            <th>Benefício Média por Família⁴</th>
+            <th>% Pessoas Beneficiadas pelo PBF - População Geral⁵</th>
+            <th>IDH⁶</th>
+            <th>Valor Pago R$⁷</th>
         </tr>
     </thead>
 
@@ -38,14 +39,92 @@
             <!--<td>{{ m.familias_cadunico|floatformat:0 }}</td>-->
             <!--<td>{{ m.familias_cadunico_atendidas|floatformat:0 }}</td>-->
             <td class="dados-numericos-tabela">{{ m.porc_familias_atendidas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ m.beneficio_medio_familia|floatformat:2 }}</td>
             <td class="dados-numericos-tabela">{{ m.porc_pessoas_atendidas|floatformat:2 }}%</td>
             <td class="dados-numericos-tabela">{{ m.idh }}</td>
             <td class="dados-numericos-tabela">{{ m.valor_pago|floatformat:2 }}</td>
         </tr>
         {% endfor %}
     </tbody>
+
 </table>
 
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">Estado</th>
+            <th>População¹</th>
+            <!--<th>Pessoas Cadastradas</th>-->
+            <th>% População Cadastrada CadÚnico²</th>
+            <!--<th>Famílias Cadastradas</th>-->
+            <!--<th>Famílias Beneficiadas pelo PBF</th>-->
+            <th>% Famílias Cadastradas CadÚnico Beneficiadas pelo PBF³</th>
+            <th>% Pessoas Beneficiadas pelo PBF - População Geral⁵</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for e in estados %}       
+        <tr>
+            <td style="width:20%;">{{ e.estado.uf }}</td>
+            <td class="dados-numericos-tabela">{{ e.populacao|floatformat:0 }}</td>
+            <!--<td>{{ m.pessoas_cadunico|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_cadastradas|floatformat:2 }}%</td>
+            <!--<td>{{ m.familias_cadunico|floatformat:0 }}</td>-->
+            <!--<td>{{ m.familias_cadunico_atendidas|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ e.porc_familias_atendidas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ e.porc_pessoas_atendidas|floatformat:2 }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>    
+</table>
+
+<table class="table table-striped table-bordered" data-page-length='50' cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="width:20%;">País</th>
+            <th>População¹</th>
+            <!--<th>Pessoas Cadastradas</th>-->
+            <th>% População Cadastrada CadÚnico²</th>
+            <!--<th>Famílias Cadastradas</th>-->
+            <!--<th>Famílias Beneficiadas pelo PBF</th>-->
+            <th>% Famílias Cadastradas CadÚnico Beneficiadas pelo PBF³</th>
+            <th>% Pessoas Beneficiadas pelo PBF - População Geral⁵</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+    </tfoot>
+
+    <tbody>
+        {% for p in pais %}       
+        <tr>
+            <td style="width:20%;">{{ p.pais.pais }}</td>
+            <td class="dados-numericos-tabela">{{ p.populacao|floatformat:0 }}</td>
+            <!--<td>{{ m.pessoas_cadunico|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_cadastradas|floatformat:2 }}%</td>
+            <!--<td>{{ m.familias_cadunico|floatformat:0 }}</td>-->
+            <!--<td>{{ m.familias_cadunico_atendidas|floatformat:0 }}</td>-->
+            <td class="dados-numericos-tabela">{{ p.porc_familias_atendidas|floatformat:2 }}%</td>
+            <td class="dados-numericos-tabela">{{ p.porc_pessoas_atendidas|floatformat:2 }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>    
+</table>
+
+<div class="row" id="legenda">
+    <p><b>Total Valor Pago: R$ {{ total|floatformat:2 }}</b></p>
+    <p>¹ População IBGE(2010)</p>
+    <p>² Pessoas Cadastradas CadÚnico (04-2015) / População IBGE (2010)</p>
+    <p>³ Famílias Cadastradas CadÚnico Atendidas (04-2015) / Famílias Cadastradas CadÚnico (04-2015)</p>
+    <p>⁴ Valor Total Pago (07-2015) / Famílias Cadastradas CadÚnico Atendidas (04-2015)</p>
+    <p>⁵ Famílias Cadastradas CadÚnico Atendidas (04-2015) / População IBGE (2010)</p>
+    <p>⁶ IDH (2010)</p>
+    <p>⁷ Valor Total Pago (07-2015)</p>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -53,7 +132,7 @@
     <script src="/assets/data-tables-1.10.9/media/js/dataTables.bootstrap.min.js"></script>
     <script>
     $(document).ready(function() {
-        var t = $('#cadastros').DataTable( {
+        var t = $('.cadastros').DataTable( {
             "columnDefs": [ {
                 "searchable": false,
                 "orderable": false,

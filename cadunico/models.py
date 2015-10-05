@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from geoliberty.models import Municipio
+from geoliberty.models import Municipio, Uf, Pais
 
 class MunicipioCadUnico(models.Model):
 
@@ -23,13 +23,11 @@ class MunicipioCadUnico(models.Model):
     def porc_f_atendidas(self):
         return (int)((self.f_atendidas_cadunico/self.f_cadunico)*100)
 
-class MunicipioBeneficiado(models.Model):
+class Beneficiado(models.Model):
 
     class Meta:
-        verbose_name = "Municipio Beneficiado"
-        verbose_name_plural = "Municipios Beneficiados"
+        abstract = True
 
-    municipio = models.ForeignKey(Municipio, verbose_name='Município')
     populacao = models.FloatField('População')
     populacao_d = models.DateField('Data População')
     pessoas_cadunico = models.FloatField('Pessoas Cadúnico')
@@ -37,15 +35,6 @@ class MunicipioBeneficiado(models.Model):
     familias_cadunico = models.FloatField('Familias Cadúnico')
     familias_cadunico_atendidas = models.FloatField('Familias Atendidas Cadúnico')
     familias_cadunico_d = models.DateField('Data Familias Cadúnico')
-    valor_pago = models.FloatField('Valor Pago')
-    valor_pago_d = models.DateField('Data Valor Pago')
-    agricultura_familiar = models.FloatField('Familias Agricultura Familiar')
-    agricultura_familiar_atendidas = models.FloatField('Familias Atendidas Agricultura Familiar')
-    agricultura_familiar_d = models.DateField('Data Familiar Agricultura Familiar')
-    idh = models.FloatField('Índice de Desenvolvimento Humano')
-    idh_d = models.DateField('Data Índice de Desenvolvimento Humano')
-    pib_percapita = models.FloatField('PIB Percapita')
-    pib_percapita_d = models.DateField('Data PIB Percapita', blank=True, null=True)
     pessoas_renda_77 = models.FloatField('Renda de até 77,00', blank=True, null=True)
     pessoas_renda_154 = models.FloatField('Renda de 77,01 até 154,00', blank=True, null=True)
     pessoas_renda_394 = models.FloatField('Renda de 154,01 até 394,00', blank=True, null=True)
@@ -55,9 +44,6 @@ class MunicipioBeneficiado(models.Model):
     familias_renda_394 = models.FloatField('Familias Renda Percapita de 154,01 até 394,00', blank=True, null=True)
     familias_renda_acima = models.FloatField('Familias Renda Percapita acima de 394,01', blank=True, null=True)
     renda_d = models.DateField('Data renda Percapita', blank=True, null=True)
-
-    def __unicode__(self):
-        return self.municipio.municipio
 
     def porc_pessoas_cadastradas(self):
         return (self.pessoas_cadunico/self.populacao)*100
@@ -93,3 +79,48 @@ class MunicipioBeneficiado(models.Model):
 
     def porc_pessoas_acima(self):
         return (self.pessoas_renda_acima/self.populacao)*100
+
+
+class MunicipioBeneficiado(Beneficiado):
+
+    class Meta:
+        verbose_name = "Municipio Beneficiado"
+        verbose_name_plural = "Municipios Beneficiados"
+
+    municipio = models.ForeignKey(Municipio, verbose_name='Município')
+    valor_pago = models.FloatField('Valor Pago')
+    valor_pago_d = models.DateField('Data Valor Pago')
+    agricultura_familiar = models.FloatField('Familias Agricultura Familiar')
+    agricultura_familiar_atendidas = models.FloatField('Familias Atendidas Agricultura Familiar')
+    agricultura_familiar_d = models.DateField('Data Familiar Agricultura Familiar')
+    idh = models.FloatField('Índice de Desenvolvimento Humano')
+    idh_d = models.DateField('Data Índice de Desenvolvimento Humano')
+    pib_percapita = models.FloatField('PIB Percapita')
+    pib_percapita_d = models.DateField('Data PIB Percapita', blank=True, null=True)
+
+    def __unicode__(self):
+        return self.municipio.municipio
+
+    def beneficio_medio_familia(self):
+        return (self.valor_pago/self.familias_cadunico_atendidas)
+
+
+class EstadoBeneficiado(Beneficiado):
+    class Meta:
+        verbose_name = "Estado Beneficiado"
+        verbose_name_plural = "Estados Beneficiados"
+
+    estado = models.ForeignKey(Uf, verbose_name='Estado')
+
+    def __unicode__(self):
+        return self.estado.uf
+
+class PaisBeneficiado(Beneficiado):
+    class Meta:
+        verbose_name = "País Beneficiado"
+        verbose_name_plural = "Países Beneficiados"
+
+    pais = models.ForeignKey(Pais, verbose_name='País')
+
+    def __unicode__(self):
+        return self.pais.pais
