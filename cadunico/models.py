@@ -28,13 +28,13 @@ class Beneficiado(models.Model):
     class Meta:
         abstract = True
 
-    populacao = models.FloatField('População', blank=True, null=True)
-    populacao_d = models.DateField('Data População', blank=True, null=True)
-    pessoas_cadunico = models.FloatField('Pessoas Cadúnico', blank=True, null=True)
-    pessoas_cadunico_d = models.DateField('Data Pessoas Cadúnico', blank=True, null=True)
-    familias_cadunico = models.FloatField('Familias Cadúnico', blank=True, null=True)
-    familias_cadunico_atendidas = models.FloatField('Familias Atendidas Cadúnico', blank=True, null=True)
-    familias_cadunico_d = models.DateField('Data Familias Cadúnico', blank=True, null=True)
+    populacao = models.FloatField('População')
+    populacao_d = models.DateField('Data População')
+    pessoas_cadunico = models.FloatField('Pessoas Cadúnico')
+    pessoas_cadunico_d = models.DateField('Data Pessoas Cadúnico')
+    familias_cadunico = models.FloatField('Familias Cadúnico')
+    familias_cadunico_atendidas = models.FloatField('Familias Atendidas Cadúnico')
+    familias_cadunico_d = models.DateField('Data Familias Cadúnico')
     pessoas_renda_77 = models.FloatField('Renda de até 77,00', blank=True, null=True)
     pessoas_renda_154 = models.FloatField('Renda de 77,01 até 154,00', blank=True, null=True)
     pessoas_renda_394 = models.FloatField('Renda de 154,01 até 394,00', blank=True, null=True)
@@ -111,8 +111,6 @@ class EstadoBeneficiado(Beneficiado):
         verbose_name_plural = "Estados Beneficiados"
 
     estado = models.ForeignKey(Uf, verbose_name='Estado')
-    valor_pago = models.FloatField('Valor Pago', blank=True, null=True)
-    valor_pago_d = models.DateField('Data Valor Pago', blank=True, null=True)
 
     def __unicode__(self):
         return self.estado.uf
