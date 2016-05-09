@@ -1,0 +1,31 @@
+{% extends "base_grupo_pesquisa.html" %}
+{% block styles %}
+<style type="text/css">
+	
+	.app{
+		margin-top: 5%;
+	}
+	.app>a{
+		text-decoration: none;
+	}
+	.app>a>button{
+		height: 100px;
+		white-space: normal;
+	}
+</style>
+{% endblock %}
+
+{% block page-header %}
+    Grupo de Pesquisa - Gestão e Organizações
+{% endblock%}
+
+{%block page-header-small%}{%endblock%}
+
+{% block conteudo %}
+	<div class="row">
+		<div class="col-md-6 app"><a href="/amzop"><button class="btn btn-block btn-success app" type="button">Estudo sobre o CadÚnico e beneficiário do Programa Bolsa Família (PBF). O caso dos municípios de abrangência da AMZOP. </button></a></div>
+		<div class="col-md-6 app"><a href="/meso-mercosul"><button class="btn btn-block btn-success app" type="button">Estudo sobre o CadÚnico e Programa Bolsa Família (PBF) dos municípios que compõe a Mesorregião da Grande Fronteira do Mercosul. </button></a></div>
+	</div>
+{% endblock %}
+
+{% block scripts %}{% endblock %}

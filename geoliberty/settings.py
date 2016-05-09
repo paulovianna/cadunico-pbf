@@ -15,9 +15,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'projeto_munaretto',                      # Or path to database file if using sqlite3.
-        'USER': 'paulo',                      # Not used with sqlite3.
-        'PASSWORD': 'thewalkingdead',                  # Not used with sqlite3.
-        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'USER': 'cadunicopbf',                      # Not used with sqlite3.
+        'PASSWORD': '$fdg&j230Htg1s2',                  # Not used with sqlite3.
+        'HOST': '200.132.38.215',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '5432',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -135,7 +135,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.gis',
     'geoliberty',
-    'cadunico'
+    'cadunico',
+    'grupo_pesquisa',
+    'cadunico_meso_mercosul'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

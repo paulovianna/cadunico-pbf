@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from views import *
-from cadunico.views import Inicio as InicioAmzop
+from grupo_pesquisa.views import Inicio as InicioGrupoPesquisa
 
 admin.autodiscover()
 
@@ -30,5 +30,6 @@ urlpatterns = patterns('',
             'document_root': settings.MEDIA_ROOT,
         }),
      url(r'^amzop/', include('cadunico.urls')),
-     url(r'^$',InicioAmzop),
+     url(r'^meso-mercosul/', include('cadunico_meso_mercosul.urls')),
+     url(r'^$',InicioGrupoPesquisa),
 )
