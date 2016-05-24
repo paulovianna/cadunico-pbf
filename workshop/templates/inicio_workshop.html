@@ -1,0 +1,63 @@
+{% extends "base_grupo_pesquisa.html" %}
+
+{% block styles %}
+<style>
+.infos{
+	text-align: justify;
+}	
+</style>
+
+
+{% endblock %}
+
+{% block page-header %}
+    II Workshop do Grupo de Pesquisa em Gestão e Organizações
+{% endblock%}
+
+{%block page-header-small%}{%endblock%}
+
+{% block conteudo %}
+	<div class="row infos">
+		<div class="col-md-12">
+			<h3>1) Apresentação</h3>
+			<p>O Workshop do grupo de pesquisa e Gestão e Organizações é uma realização dos docentes, discentes e técnicos administrativos que integram o grupo de pesquisa Gestão e Organizações, que tem por objetivo desenvolver a produção científica tendo em vista a publicação de novos conhecimentos em temas inerentes à gestão de organizações, sejam elas públicas, privadas ou do agronegócio.</p>
+			<p>O grupo de pesquisa Gestão e Organizações visa contribuir com o desenvolvimento de pesquisas acerca de duas temáticas sendo a primeira denominada de Gestão econômico-financeira e patrimonial das organizações que objetiva estudar a gestão das organizações sobre o aspecto econômico, financeiro e patrimonial e o processo de gestão da sustentabilidade sob o aspecto social, ambiental e econômico, e a segunda temática denominada de Gestão mercadológica e Social que tem como objetivo realizar estudos relacionados ás estratégias empresariais, mercados agropecuários, comportamento do consumidor, relações interpessoais e processo decisórios.</p>
+			<p>Nesta perspectiva, o grupo de pesquisa pretende realizar o 2º Workshop de pesquisa, como meio para divulgar e discutir as temáticas inerentes aos estudos concluídos e que estão em andamento em relação ao grupo e demais estudos de iniciação científica desenvolvidos na UFSM – Campus de Frederico Westphalen – RS.</p>
+
+			<h3>Inscrições</h3>
+			<p>As inscrições serão realizadas até às 23h59min do dia 15 de Junho de 2016. Aos alunos e demais participantes do evento e aos autores dos projetos de pesquisa, será conferido certificado de participação e de apresentação de trabalhos e aos participantes ouvintes de toda a programação será concedido certificado de 20 (vinte horas) horas.</p>
+
+			<h3>Submissão</h3>
+			<p>Os trabalhos serão submetidos por meio de resumos, que não devem exceder a uma página. O resumo deve apresentar o título do trabalho, os objetivos do estudo, a metodologia utilizada, e os principais resultados. Além de descrever as palavras chave. Apresenta-se em anexo modelo do resumo (Template).</p>
+			<h4>Áreas Temáticas</h4>
+			<ul>
+				<li>Gestão e organização rural;</li>
+				<li>Desenvolvimento sustentável;</li>
+				<li>Gestão mercadológica;</li>
+			</ul>
+
+			<h3>Programação</h3>
+			<p>O evento será realizado Centro de convivência da UFSM – Campus de Frederico Westphalen – RS, nos dias 28 e 29 de junho de 2016.</p>
+
+			<p><b>Outras informações pelos telefones (55)3744-0691 e (55) 3744-0696.</b></p>
+		</div>
+	</div>
+	<!--<div class="row">
+		<div class="col-md-12 inscricao">
+		   {% load i18n %}
+		   {% if form.errors %}
+		   <p class="errorlist">{% trans "Sorry there are corrections needed in your form below:" %} {{ form.non_field_errors }}</p>
+		   {% endif %}
+		   
+		   <form enctype="multipart/form-data" method="post" action=".">
+		   {% csrf_token %}
+		   {{ form.as_p }}
+		   <input type="submit" value="Enviar" />
+		   </form>
+		</div>
+	</div>-->
+{% endblock %}
+
+{% block scripts %}{% endblock %}
+<h1>Formulário de Inscrição</h1>
+

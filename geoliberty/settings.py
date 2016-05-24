@@ -137,7 +137,8 @@ INSTALLED_APPS = (
     'geoliberty',
     'cadunico',
     'grupo_pesquisa',
-    'cadunico_meso_mercosul'
+    'cadunico_meso_mercosul',
+    'workshop'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

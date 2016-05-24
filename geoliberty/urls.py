@@ -31,5 +31,6 @@ urlpatterns = patterns('',
         }),
      url(r'^amzop/', include('cadunico.urls')),
      url(r'^meso-mercosul/', include('cadunico_meso_mercosul.urls')),
+     url(r'^workshop/', include('workshop.urls')),
      url(r'^$',InicioGrupoPesquisa),
 )
