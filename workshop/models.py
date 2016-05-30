@@ -15,7 +15,7 @@ class Inscricao(models.Model):
     instituicao = models.CharField('Instituição',max_length=64)
     orientador = models.CharField('Orientador',max_length=128)
     participantes = models.TextField('Participantes')
-    resumo = models.FileField(max_length=256, upload_to= MEDIA_ROOT +'files/resumos-workshop',null=True)
+    resumo = models.FileField(max_length=256, upload_to= 'files/resumos-workshop',null=True)
     area = models.CharField('Área Temática',max_length=8,choices=OPCOES,default='GOR')
 
     class Meta:

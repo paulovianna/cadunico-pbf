@@ -2,6 +2,6 @@ from django.contrib import admin
 from workshop.models import Inscricao
 
 class InscricaoAdmin(admin.ModelAdmin):
-     pass
+     list_display = ('titulo', 'instituicao')
 
-admin.site.register(Inscricao,InscricaoAdmin)
+admin.site.register(Inscricao,InscricaoAdmin)	

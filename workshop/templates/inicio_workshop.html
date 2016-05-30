@@ -1,13 +1,24 @@
 {% extends "base_grupo_pesquisa.html" %}
+{% load bootstrap_tags %}
 
 {% block styles %}
 <style>
 .infos{
 	text-align: justify;
-}	
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.errorlist{
+	color:#a94442;
+	font-weight: bold;
+}
+
 </style>
-
-
 {% endblock %}
 
 {% block page-header %}
@@ -17,6 +28,17 @@
 {%block page-header-small%}{%endblock%}
 
 {% block conteudo %}
+	{% if inscricao %}
+<div class="row">
+	<div class="col-md-12">
+		{% if erro %}
+			<div class="alert alert-danger" role="alert">Ocorreu um erro ao realizar sua inscrição, verifique o formulário abaixo.</div>
+		{% else%}
+			<div class="alert alert-success" role="alert">Sua inscrição foi realizada com sucesso!</div>
+		{% endif %}
+	</div>
+</div>
+{% endif %}
 	<div class="row infos">
 		<div class="col-md-12">
 			<h3>1) Apresentação</h3>
@@ -42,22 +64,21 @@
 			<p><b>Outras informações pelos telefones (55)3744-0691 e (55) 3744-0696.</b></p>
 		</div>
 	</div>
-	<!--<div class="row">
+	<div class="row">
 		<div class="col-md-12 inscricao">
+			<h3>Formulário de Inscrição</h3>
 		   {% load i18n %}
 		   {% if form.errors %}
-		   <p class="errorlist">{% trans "Sorry there are corrections needed in your form below:" %} {{ form.non_field_errors }}</p>
+		   <p class="errorlist">Por favor, corrija os erros apresentados abaixo e tente enviar a inscrição novamente:"{{ form.non_field_errors }}</p>
 		   {% endif %}
 		   
 		   <form enctype="multipart/form-data" method="post" action=".">
 		   {% csrf_token %}
-		   {{ form.as_p }}
-		   <input type="submit" value="Enviar" />
+		   {{ form|as_bootstrap }}
+		   <input type="submit" class="btn btn-success btn-lg" value="Enviar" />
 		   </form>
 		</div>
-	</div>-->
+	</div>
 {% endblock %}
-
 {% block scripts %}{% endblock %}
-<h1>Formulário de Inscrição</h1>
 

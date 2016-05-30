@@ -56,7 +56,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT_PATH,'assets/')
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = '/assets/'
+MEDIA_URL = 'http://localhost:8000/assets/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.gis',
+    'django_forms_bootstrap',
     'geoliberty',
     'cadunico',
     'grupo_pesquisa',
