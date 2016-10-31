@@ -5,7 +5,7 @@ class MunicipioCadUnicoAdmin(admin.ModelAdmin):
      pass
 
 class MunicipioBeneficiadoAdmin(admin.ModelAdmin):
-     pass
+     list_display = ('municipio', 'pessoas_cadunico_d')
 
 class EstadoBeneficiadoAdmin(admin.ModelAdmin):
      pass
