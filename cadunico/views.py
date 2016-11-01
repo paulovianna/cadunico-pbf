@@ -46,3 +46,21 @@ def ExtratoRendaPessoas(request):
     pais = PaisBeneficiado.objects.all().order_by('pais__pais')
 
     return render_to_response('extratos_renda_pessoas.html', RequestContext(request,{'municipios':obj,'estados':est,'pais':pais}))
+
+def GraficoMunicipio(request):
+
+    municipios = MunicipioBeneficiado.objects.all().order_by('municipio__municipio').distinct('municipio__municipio')
+
+    return render_to_response('grafico_municipio_cadunico.html', RequestContext(request,{'municipios':municipios, 'nome':'Selecione um Município'}))
+
+def BeneficiadosMunicipio(request):
+
+    id = request.POST.get('municipio')
+    print request.POST.get('municipio')
+    nome = ''
+    municipios = MunicipioBeneficiado.objects.all().order_by('municipio__municipio').distinct('municipio__municipio')
+    dados = MunicipioBeneficiado.objects.filter(municipio__id=id)
+    for d in dados:
+        nome = d.municipio.municipio
+
+    return render_to_response('grafico_municipio_cadunico.html', RequestContext(request,{'municipios':municipios, 'dados':dados, 'nome':nome}))

@@ -1,0 +1,83 @@
+{% extends "base_cadunico.html" %}
+{% block styles %}
+	<style>
+		#chart_div{
+			margin-bottom: 13%;
+		}
+	</style>
+{% endblock %}
+
+{% block page-header %}
+    Gráfico Município x Beneficiados - {{  nome }}
+{% endblock%}
+
+{%block page-header-small%}{%endblock%}
+
+{% block conteudo %}
+	<form action="/amzop/beneficiados-municipio/" method="POST">
+		{% csrf_token %} 
+		<select name="municipio" id="municipio">
+			{% for m in municipios %}       
+        		<option value="{{ m.municipio.id }}">{{ m.municipio.municipio }}</option>
+        	{% endfor %}
+		</select>
+		<input type="submit" value="Buscar">
+	</form>
+	<div id="chart_div"></div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+		google.charts.load('current', {packages: ['corechart', 'line']});
+		google.charts.setOnLoadCallback(drawAxisTickColors);
+
+		function drawAxisTickColors() {
+		      var data = new google.visualization.DataTable();
+		      data.addColumn('string', 'X');
+		      data.addColumn('number', 'Beneficiados');
+
+		      data.addRows([
+		      	{% for d in dados %}
+		        	["{{d.pessoas_cadunico_d}}",{{d.pessoas_cadunico|floatformat:"0"}}],
+		        {% endfor %}
+		      ]);
+
+		      var options = {
+		        hAxis: {
+		          title: 'Tempo',
+		          textStyle: {
+		            color: '#548b00',
+		            fontSize: 12,
+		            fontName: 'Arial',
+		            bold: true,
+		            italic: true
+		          },
+		          titleTextStyle: {
+		            color: '#548b00',
+		            fontSize: 18,
+		            fontName: 'Arial',
+		            bold: true,
+		            italic: true
+		          }
+		        },
+		        vAxis: {
+		          title: 'Beneficiados',
+		          textStyle: {
+		            color: '#548b00',
+		            fontSize: 12,
+		            bold: true
+		          },
+		          titleTextStyle: {
+		            color: '#548b00',
+		            fontSize: 18,
+		            bold: true
+		          }
+		        },
+		        colors: ['#548b00']
+		      };
+		      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+		      chart.draw(data, options);
+		    }
+	</script>
+{% endblock %}
