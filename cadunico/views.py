@@ -23,7 +23,7 @@ def MunicipiosCadUnico(request):
 
 def CadastrosGerais(request):
 
-    mun = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2015', pessoas_cadunico_d__month='12', pessoas_cadunico_d__day='01').order_by('municipio__municipio')
+    mun = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2016', pessoas_cadunico_d__month='05', pessoas_cadunico_d__day='05').order_by('municipio__municipio')
     est = EstadoBeneficiado.objects.all().order_by('estado__uf')
     pais = PaisBeneficiado.objects.all().order_by('pais__pais')
     total = 0
@@ -33,7 +33,7 @@ def CadastrosGerais(request):
 
 def ExtratoRendaFamilias(request):
 
-    obj = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2015', pessoas_cadunico_d__month='12', pessoas_cadunico_d__day='01').order_by('municipio__municipio')
+    obj = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2016', pessoas_cadunico_d__month='05', pessoas_cadunico_d__day='05').order_by('municipio__municipio')
     est = EstadoBeneficiado.objects.all().order_by('estado__uf')
     pais = PaisBeneficiado.objects.all().order_by('pais__pais')
 
@@ -41,7 +41,7 @@ def ExtratoRendaFamilias(request):
 
 def ExtratoRendaPessoas(request):
 
-    obj = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2015', pessoas_cadunico_d__month='12', pessoas_cadunico_d__day='01').order_by('municipio__municipio')
+    obj = MunicipioBeneficiado.objects.filter(pessoas_cadunico_d__year='2016', pessoas_cadunico_d__month='05', pessoas_cadunico_d__day='05').order_by('municipio__municipio')
     est = EstadoBeneficiado.objects.all().order_by('estado__uf')
     pais = PaisBeneficiado.objects.all().order_by('pais__pais')
 
